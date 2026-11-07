@@ -20,21 +20,85 @@
 :root[data-theme="dark"]{--bg:#0d1932;--surface:#14223f;--ink:#eef3fc;--muted:#a8b5cf;--line:#27375a;--brand:#f6b90f}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *,*::before,*::after{box-sizing:inherit}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Atkinson Hyperlegible",Verdana,sans-serif;font-size:1.25rem;line-height:1.7;padding-bottom:5.5rem}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Atkinson Hyperlegible",Verdana,sans-serif;font-size:1.15rem;line-height:1.6;padding-bottom:5.5rem}
 h1,h2,h3{font-weight:700;line-height:1.15;margin:0;letter-spacing:-.01em}
 a:focus-visible,.btn:focus-visible{outline:3px solid var(--taxi);outline-offset:3px}
 
-.hero{position:relative;box-sizing:border-box;color:#fff;background:linear-gradient(180deg,#050b1a 0%,#0e2150 70%,#1a3470 100%);overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:calc(1rem + env(safe-area-inset-top,0px)) 1.5rem 0}
-.hero>*{position:relative}
-.top{display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.mark{font-weight:700;font-size:1.5rem}
-.badge{font-size:.95rem;border:1.5px solid rgba(255,255,255,.6);border-radius:999px;padding:.2rem .8rem}
-.hero h1{font-size:clamp(2rem,7vw,3.5rem);max-width:16ch;margin-top:1rem}
-.hero p{max-width:36ch;font-size:1.2rem;margin:.5rem 0 0}
-.scene{display:block;width:calc(100% + 3rem);margin:1rem -1.5rem 0;height:clamp(150px,25vh,240px)}
-.beam{animation:glow 4s ease-in-out infinite alternate}@keyframes glow{from{opacity:.55}to{opacity:1}}@media (prefers-reduced-motion:reduce){.beam{animation:none}}
-.actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1rem}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:3.5rem;padding:.7rem 1.5rem;border-radius:999px;font-weight:700;font-size:1.15rem;text-decoration:none;border:2px solid var(--taxi)}
+/* En-tête adaptatif : disposition verticale par défaut sur mobile, et en deux colonnes intelligentes sur tablette/paysage */
+.hero{
+  position:relative;
+  min-height:100svh;
+  min-height:100vh;
+  color:#fff;
+  background:linear-gradient(180deg,#123a78 0%,#2a74cf 52%,#8fd6f6 100%);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding:calc(1rem + env(safe-area-inset-top,0px)) 1.5rem 0;
+}
+.hero-content{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.5rem}
+.mark{font-weight:700;font-size:1.4rem}
+.badge{font-size:.85rem;border:1.5px solid rgba(255,255,255,.6);border-radius:999px;padding:.2rem .7rem}
+.hero h1{font-size:clamp(2rem, 5vw, 3.2rem);max-width:20ch;margin-top:.5rem}
+.hero p{max-width:40ch;font-size:1.1rem;margin:.6rem 0 0}
+.scene{
+  display:block;
+  width:calc(100% + 3rem);
+  margin:auto -1.5rem 0;
+  height:clamp(200px, 35vh, 320px);
+}
+
+/* En mode paysage (tablettes et écrans larges), on bascule en deux colonnes parfaites sans coupure */
+@media (orientation: landscape) and (min-width: 768px) {
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-rows: auto 1fr;
+    align-items: center;
+    gap: 1.5rem;
+    padding: calc(1rem + env(safe-area-inset-top,0px)) 2rem 0;
+  }
+  .top {
+    grid-column: 1 / -1;
+    margin-bottom: 0;
+  }
+  .hero-content {
+    grid-column: 1 / 2;
+    align-self: center;
+    padding-bottom: 2rem;
+  }
+  .hero h1 {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    max-width: 24ch;
+  }
+  .scene {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    width: 100%;
+    height: clamp(220px, 60vh, 360px);
+    margin: 0;
+    align-self: end;
+  }
+}
+
+.bob{animation:bob .8s ease-in-out infinite alternate}@keyframes bob{from{transform:translateY(0)}to{transform:translateY(-1.6px)}}
+.spin{animation:spin .65s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.road{animation:dash .45s linear infinite}@keyframes dash{to{stroke-dashoffset:26}}
+.cl1{animation:drift 20s ease-in-out infinite alternate}.cl2{animation:drift 28s ease-in-out infinite alternate-reverse}
+@keyframes drift{from{transform:translateX(-18px)}to{transform:translateX(30px)}}
+.halo{animation:pulse 3s ease-in-out infinite alternate;transform-origin:330px 42px}@keyframes pulse{from{opacity:.25;transform:scale(1)}to{opacity:.55;transform:scale(1.15)}}
+.lamp{animation:lamp 1.2s ease-in-out infinite alternate}@keyframes lamp{from{opacity:.3}to{opacity:1}}
+.beam{animation:beamPulse 1.5s ease-in-out infinite alternate}@keyframes beamPulse{from{opacity:.6}to{opacity:.9}}
+@media (prefers-reduced-motion:reduce){.bob,.spin,.road,.cl1,.cl2,.halo,.lamp,.beam{animation:none}}
+.actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.25rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:3.2rem;padding:.6rem 1.4rem;border-radius:999px;font-weight:700;font-size:1.05rem;text-decoration:none;border:2px solid var(--taxi)}
 .btn-main{background:var(--taxi);color:var(--taxi-ink)}
 .btn-alt{color:#fff;border-color:rgba(255,255,255,.7)}
 
@@ -102,12 +166,6 @@ footer{max-width:46rem;margin:3rem auto 0;padding:1.25rem 1.5rem 0;border-top:1p
 
 .dock{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;gap:.6rem;padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom,0px));background:var(--night);border-top:1px solid rgba(255,255,255,.15)}
 .dock .btn{flex:1;min-height:3.2rem}
-
-/* Supprimer définitivement le badge Netlify */
-#netlify-badge-container,
-a[href*="netlify.com/wt?utm_source"] {
-  display: none !important;
-}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"TaxiService","name":"Taxi Santé","telephone":"+33695020297","description":"Taxi conventionné Assurance Maladie, transport médical assis longue distance vers Metz, Nancy, Strasbourg, ALD, cancer, chimiothérapie, radiothérapie, consultations spécialisées, maladies chroniques.","areaServed":["Behren-lès-Forbach","Forbach","Stiring-Wendel","Petite-Rosselle","Morsbach","Rosbruck","Cocheren","Oeting","Spicheren","Diebling","Théding","Freyming-Merlebach","L’Hôpital","Carling","Saint-Avold","Creutzwald","Hombourg-Haut","Farébersviller"]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Faut-il une prescription médicale pour un taxi conventionné ?","acceptedAnswer":{"@type":"Answer","text":"Oui, pour un transport remboursé, votre médecin doit la rédiger avant le trajet."}},{"@type":"Question","name":"Mon transport est-il remboursé en ALD ?","acceptedAnswer":{"@type":"Answer","text":"Sur prescription médicale, il peut être pris en charge par l’Assurance Maladie, selon votre situation et le motif du trajet."}},{"@type":"Question","name":"Faut-il un accord préalable pour les traitements en série ou les longs trajets ?","acceptedAnswer":{"@type":"Answer","text":"Un accord préalable de l’Assurance Maladie est souvent nécessaire. Taxi Santé vous aide à effectuer cette démarche."}}]}</script>
@@ -115,7 +173,7 @@ a[href*="netlify.com/wt?utm_source"] {
 <body>
 <header class="hero">
   <div class="top"><span class="mark">Taxi Santé</span><span class="badge">Conventionné Assurance Maladie</span></div>
-  <div>
+  <div class="hero-content">
     <h1>Taxi conventionné pour vos traitements, de chez vous à l’hôpital.</h1>
     <p>Transport médical assis vers Metz, Nancy et Strasbourg : cancer, ALD, consultations spécialisées, examens, hospitalisation.</p>
     <div class="actions">
@@ -123,34 +181,73 @@ a[href*="netlify.com/wt?utm_source"] {
       <a class="btn btn-alt" href="#reserver">Réserver un trajet</a>
     </div>
   </div>
-  <svg class="scene" viewBox="0 0 400 230" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Un taxi roule la nuit devant les chevalements et les terrils du bassin houiller">
+  <svg class="scene" viewBox="0 0 400 230" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Une Mercedes GLB noire, taxi conventionné, roule au soleil vers l’hôpital">
+    <circle class="halo" cx="330" cy="42" r="30" fill="#ffe27a"/>
+    <circle cx="330" cy="42" r="20" fill="#ffd23f"/>
+    <g class="cl1" fill="#fff" opacity=".92"><ellipse cx="90" cy="40" rx="22" ry="8"/><ellipse cx="108" cy="33" rx="15" ry="9"/><ellipse cx="76" cy="36" rx="14" ry="7"/></g>
+    <g class="cl2" fill="#fff" opacity=".85"><ellipse cx="240" cy="66" rx="18" ry="6"/><ellipse cx="253" cy="61" rx="12" ry="7"/></g>
+    <path d="M-10 200 Q60 150 130 175 T260 168 T410 180 V205 H-10Z" fill="#6fcf8d"/>
+    <path d="M18 200 L52 160 L96 158 L126 200Z" fill="#5bb57e"/>
+    <g fill="#1f3f77"><path d="M58 190 L76 128 L94 190 L89 190 L76 140 L63 190Z"/><circle cx="76" cy="126" r="6" fill="none" stroke="#1f3f77" stroke-width="3"/><rect x="90" y="166" width="22" height="26"/></g>
+    <path d="M-10 205 Q80 178 170 194 T410 188 V212 H-10Z" fill="#46b36b"/>
+    <g><rect x="251" y="176" width="3" height="14" fill="#7a5a3a"/><circle cx="252" cy="172" r="10" fill="#2f9a57"/><rect x="118" y="178" width="3" height="12" fill="#7a5a3a"/><circle cx="119" cy="174" r="9" fill="#2f9a57"/></g>
+    <rect x="268" y="140" width="70" height="60" rx="2" fill="#f6f9fc"/><rect x="285" y="128" width="36" height="14" fill="#f6f9fc"/>
+    <g fill="#2fbf9b"><rect x="298" y="104" width="10" height="26" rx="2"/><rect x="290" y="112" width="26" height="10" rx="2"/></g>
+    <g fill="#8ccdf5"><rect x="276" y="148" width="9" height="9"/><rect x="293" y="148" width="9" height="9"/><rect x="310" y="148" width="9" height="9"/><rect x="327" y="148" width="9" height="9"/><rect x="276" y="166" width="9" height="9"/><rect x="327" y="166" width="9" height="9"/></g>
+    <rect x="297" y="182" width="12" height="18" fill="#2a74cf"/>
+    <rect y="198" width="400" height="32" fill="#364560"/><line x1="0" y1="198.5" x2="400" y2="198.5" stroke="#f2f5fa" stroke-width="1.2"/>
+    <line class="road" x1="-26" y1="214" x2="430" y2="214" stroke="#ffd23f" stroke-width="2.5" stroke-dasharray="14 12"/>
+    
+    <!-- Faisceau lumineux des phares avant vers la route -->
+    <polygon class="beam" points="-30,195 2,210 2,175" fill="url(#beamGrad)" opacity="0.75"/>
     <defs>
-      <linearGradient id="b" x1="0" x2="1"><stop offset="0" stop-color="#f6b90f" stop-opacity=".55"/><stop offset="1" stop-color="#f6b90f" stop-opacity="0"/></linearGradient>
-      <filter id="g"><feGaussianBlur stdDeviation="3"/></filter>
+      <linearGradient id="beamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#fff7c9" stop-opacity="0.85"/>
+        <stop offset="100%" stop-color="#ffd23f" stop-opacity="0"/>
+      </linearGradient>
     </defs>
-    <g fill="#fff" opacity=".7"><circle cx="40" cy="30" r="1"/><circle cx="120" cy="55" r="1.2"/><circle cx="210" cy="22" r="1"/><circle cx="300" cy="48" r="1.3"/><circle cx="360" cy="20" r="1"/><circle cx="85" cy="90" r=".8"/></g>
-    <path d="M-10 200 L40 150 L110 146 L170 200Z" fill="#16305f"/>
-    <path d="M150 200 L200 160 L250 160 L290 200Z" fill="#102447"/>
-    <g fill="#0a1a3d"><path d="M18 200 L44 104 L70 200 L62 200 L44 124 L26 200Z"/><rect x="38" y="98" width="12" height="8"/><circle cx="44" cy="98" r="9" fill="none" stroke="#0a1a3d" stroke-width="3"/><rect x="62" y="150" width="30" height="50"/>
-    </g><rect x="296" y="120" width="84" height="80" fill="#0f2350"/><rect x="316" y="104" width="44" height="20" fill="#0f2350"/><g fill="#ffe08a"><rect x="304" y="132" width="9" height="9"/><rect x="322" y="132" width="9" height="9"/><rect x="340" y="132" width="9" height="9"/><rect x="358" y="132" width="9" height="9"/><rect x="304" y="152" width="9" height="9"/><rect x="340" y="152" width="9" height="9"/><rect x="358" y="152" width="9" height="9"/><rect x="322" y="172" width="9" height="9"/><rect x="304" y="172" width="9" height="9"/></g><g fill="#2fbf9b"><rect x="332" y="80" width="12" height="36" rx="2"/><rect x="320" y="92" width="36" height="12" rx="2"/></g>
-    <rect y="200" width="400" height="30" fill="#050b1a"/>
-    <line x1="0" y1="214" x2="400" y2="214" stroke="#f6b90f" stroke-width="2" stroke-dasharray="14 12"/>
-    <g transform="translate(150 178)">
-      <polygon class="beam" points="88,16 230,2 230,34" fill="url(#b)"/>
-      <circle class="beam" cx="45" cy="-8" r="10" fill="#f6b90f" filter="url(#g)"/>
-      <rect x="36" y="-11" width="18" height="6" rx="2" fill="#f6b90f"/>
-      <path d="M0 22 L0 14 Q0 10 5 9 L18 6 L28 -5 H62 L72 6 L84 9 Q90 10 90 14 V22 Q90 26 86 26 H4 Q0 26 0 22Z" fill="#1d2b4d"/>
-      <path d="M22 6 L30 -2 H44 V6Z M48 6 V-2 H61 L68 6Z" fill="#8fb0e8" opacity=".75"/>
-      <circle cx="20" cy="26" r="7" fill="#050b1a"/><circle cx="70" cy="26" r="7" fill="#050b1a"/>
-      <rect x="84" y="13" width="5" height="4" rx="1" fill="#fff6c8"/>
-    </g>
+
+    <!-- Mercedes GLB Noire (SUV compact moderne) avec reflets optimisés -->
+    <g transform="translate(104 150) scale(1.15)"><g class="bob">
+      <!-- Ombre portée au sol -->
+      <ellipse cx="60" cy="49" rx="64" ry="3" fill="#000" opacity="0.32"/>
+      
+      <!-- Carrosserie principale SUV Noir Profond -->
+      <path d="M2 37 L2 22 Q2 12 10 9 L18 4 Q22 2 28 2 L78 2 Q84 2 89 5 L99 12 L116 16 Q122 18 123 25 L123 37 Q123 40 120 40 L104 40 A10 10 0 0 0 86 40 L38 40 A10 10 0 0 0 20 40 L5 40 Q2 40 2 37 Z" fill="#0b0b0f"/>
+      <path d="M4 37 L121 37 L121 39 Q121 41 119 41 L6 41 Q4 41 4 39 Z" fill="#1b1b22"/>
+
+      <!-- Reflets métalliques subtils sur le toit et capot -->
+      <path d="M25 3.5 L76 3.5 Q80 3.5 84 6 L92 12 L52 12 L22 6 Q23.5 4.5 25 3.5 Z" fill="#ffffff" opacity="0.12"/>
+
+      <!-- Vitres teintées et encadrement (Style SUV GLB) -->
+      <path d="M22 6 L52 6 L52 16 L14 16 L18 9 Q20 6 22 6Z M56 6 L84 6 Q87 6 89 9 L97 16 L56 16Z" fill="#151821"/>
+      <path d="M23 7.5 L50 7.5 L50 14.5 L17 14.5 L20 9.5 Q21.5 7.5 23 7.5Z M54 7.5 L82 7.5 Q83.5 7.5 85 9.5 L93 14.5 L54 14.5Z" fill="#88a9c9" opacity="0.9"/>
+      <line x1="18" y1="2" x2="84" y2="2" stroke="#2d2d38" stroke-width="1.8"/>
+      <line x1="2" y1="18" x2="121" y2="18" stroke="#18181f" stroke-width="1"/>
+      <line x1="52" y1="6" x2="52" y2="37" stroke="#050508" stroke-width="1.2"/>
+
+      <!-- Feux et détails avant / arrière -->
+      <rect x="1.5" y="21" width="3.5" height="8" rx="1.5" fill="#ff2a2a"/>
+      <rect x="117.5" y="21.5" width="5" height="4.5" rx="1" fill="#fff9d6"/>
+      
+      <!-- Calandre noire typique Mercedes avec barrette centrale chromée -->
+      <rect x="1.5" y="27" width="5" height="10" rx="1" fill="#121217"/>
+      <line x1="3" y1="29" x2="3" y2="35" stroke="#e8e8f2" stroke-width="1.2"/>
+
+      <!-- Enseigne Taxi lumineuse sur le toit -->
+      <g transform="translate(53 -5)"><circle class="lamp" cx="9" cy="4" r="9" fill="#ffd23f"/><rect x="1" y="1" width="16" height="5" rx="1.5" fill="#ffd23f"/><text x="9" y="5.5" font-size="5" font-weight="bold" fill="#1a1400" text-anchor="middle">TAXI</text></g>
+
+      <!-- Roues avant et arrière avec jantes alu style Mercedes -->
+      <g transform="translate(29 40)"><circle r="9.5" fill="#08080d"/><g class="spin"><circle r="6" fill="#d8dce2"/><circle r="2" fill="#08080d"/><path d="M0-6V6M-6 0H6M-4.2-4.2L4.2 4.2M-4.2 4.2L4.2-4.2" stroke="#6f7988" stroke-width="1"/></g></g>
+      <g transform="translate(95 40)"><circle r="9.5" fill="#08080d"/><g class="spin"><circle r="6" fill="#d8dce2"/><circle r="2" fill="#08080d"/><path d="M0-6V6M-6 0H6M-4.2-4.2L4.2 4.2M-4.2 4.2L4.2-4.2" stroke="#6f7988" stroke-width="1"/></g></g>
+    </g></g>
   </svg>
 </header>
 
 <main>
   <div class="trust"><span class="stars" aria-hidden="true">★★★★★</span><span>5,0 sur 5, avis Google</span><span>Conventionné Assurance Maladie</span></div>
   <section>
-    <h2>Taxi conventionné à Forbach pour vos soins et consultations</h2>
+    <h2>Taxi conventionné à behren les Forbach pour vos soins et consultations</h2>
     <p>Chimiothérapie, radiothérapie, consultation spécialisée, examen, hospitalisation ou suivi d’une maladie chronique : nous vous conduisons à Metz, Nancy ou Strasbourg dans un véhicule confortable, avec un chauffeur qui reste à votre écoute et vous aide dans vos démarches administratives si besoin.</p>
     <p>Taxi Santé est conventionné par l’Assurance Maladie, commune de stationnement Behren-lès-Forbach. Nous prenons en charge les patients de tout le bassin houiller.</p>
   </section>
@@ -258,18 +355,6 @@ a[href*="netlify.com/wt?utm_source"] {
 </nav>
 <script>
 (function(){
-  // Script de nettoyage radical du badge Netlify injecté dynamiquement
-  setInterval(function() {
-    var badges = document.querySelectorAll('iframe, div, a');
-    badges.forEach(function(el) {
-      if ((el.id && el.id.includes('netlify')) || 
-          (el.className && typeof el.className === 'string' && el.className.includes('netlify')) ||
-          (el.innerHTML && el.innerHTML.includes('Powered by Netlify'))) {
-        el.remove();
-      }
-    });
-  }, 500);
-
   var $=function(i){return document.getElementById(i)};
   function build(){
     var nom=$("nom").value.trim(),tel=$("tel").value.trim(),dep=$("dep").value.trim(),dest=$("dest").value;
