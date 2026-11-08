@@ -1,35 +1,34 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Taxi Santé – Taxi conventionné à Behren-lès-Forbach</title>
-<meta name="description" content="Taxi conventionné à Forbach : transport médical assis vers Metz, Nancy et Strasbourg. Cancer, ALD, consultations spécialisées, examens, hospitalisation. Réservation en ligne ou au 06 95 02 02 97.">
-<style>
-:root{
-  --night:#0a1630; --taxi:#f6b90f; --taxi-ink:#1a1400;
-  --bg:#f3f6fb; --surface:#fff; --ink:#12203d; --muted:#4d5b78; --line:#d6deeb; --brand:#17407f;
-  box-sizing:border-box;
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){--bg:#0d1932;--surface:#14223f;--ink:#eef3fc;--muted:#a8b5cf;--line:#27375a;--brand:#f6b90f}
-}
-:root[data-theme="dark"]{--bg:#0d1932;--surface:#14223f;--ink:#eef3fc;--muted:#a8b5cf;--line:#27375a;--brand:#f6b90f}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*,*::before,*::after{box-sizing:inherit}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Verdana,sans-serif;-webkit-text-size-adjust:100%;font-size:1.25rem;line-height:1.7;padding-bottom:5.5rem}
-h1,h2,h3{font-weight:700;line-height:1.15;margin:0;letter-spacing:-.01em}
-a:focus-visible,.btn:focus-visible{outline:3px solid var(--taxi);outline-offset:3px}
+      <p>Vous avez voyagé avec Taxi Santé ? Un avis Google aide d’autres patients à nous trouver. Cela prend 30 secondes.</p>
+      <a class="btn btn-main" href="https://g.page/r/CTIq5RHScfoNEAE/review" target="_blank" rel="noopener">Laisser un avis Google</a>
+    </div>
+  </section>
+</main>
 
-.hero{position:relative;min-height:100svh;min-height:100vh;color:#fff;background:linear-gradient(180deg,#123a78 0%,#2a74cf 52%,#8fd6f6 100%);overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:calc(1.25rem + env(safe-area-inset-top,0px)) 1.5rem 2rem}
-.hero>*{position:relative}
-.hero>.top,.hero>div{width:100%;max-width:46rem;margin-left:auto;margin-right:auto}
-html{scroll-behavior:smooth}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-@media (min-width:900px){.scene{height:clamp(300px,46vh,480px)}.dock{display:none}body{padding-bottom:1rem}.hero h1{font-size:clamp(3rem,5vw,4.4rem)}}
-@media (max-width:360px){.btn{font-size:1.05rem;padding:.7rem 1rem}.badge{font-size:.85rem}}
-.top{display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.mark{font-weight:700;font-size:1.5rem}
-.badge{font-size:.95rem;border:1.5px solid rgba(255,255,255,.6);border-radius:999px;padding:.2rem .8rem}
-.hero h1{font-size:clamp(2.2rem,8.5vw,3.8rem);max-width:16ch;margin-top:2rem}
-.hero p{max-width:36ch;font-size:1.3rem;margin:1rem 0 0}
-.scene{display:block;width:calc(100% + 3rem);margin:auto -1.5rem -2rem;height:clamp(220px,40vh,380px)}
+<footer><strong>Taxi Santé</strong>, taxi conventionné, Behren-lès-Forbach (Moselle).<br><a href="https://g.page/r/CTIq5RHScfoNEAE/review" target="_blank" rel="noopener" style="color:var(--brand);font-weight:700">Laisser un avis Google</a></footer>
+
+<nav class="dock" aria-label="Contact">
+  <a class="btn btn-main" href="tel:+33695020297">Appeler</a>
+  <a class="btn btn-alt" href="#reserver">Réserver</a>
+</nav>
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i)};
+  function build(){
+    var nom=$("nom").value.trim(),tel=$("tel").value.trim(),dep=$("dep").value.trim(),dest=$("dest").value;
+    if(!nom||!tel||!dep||!dest){$("err").textContent="Merci de remplir : nom, téléphone, adresse de départ et destination.";return null}
+    $("err").textContent="";
+    var d=$("date").value,h=$("heure").value;
+    var l=["Bonjour, je souhaite réserver un taxi.","Nom : "+nom,"Téléphone : "+tel];
+    if(d)l.push("Date : "+d.split("-").reverse().join("/"));
+    if(h)l.push("Heure du rendez-vous : "+h);
+    l.push("Départ : "+dep,"Destination : "+dest,"Type : "+$("type").value,"Aller-retour : "+($("ar").checked?"oui":"non"));
+    if($("msg").value.trim())l.push("Précisions : "+$("msg").value.trim());
+    return l.join("\n");
+  }
+  function open(url){var a=document.createElement("a");a.href=url;a.target="_blank";a.rel="noopener";document.body.appendChild(a);a.click();a.remove()}
+  $("bwa").onclick=function(){var m=build();if(m)open("https://wa.me/33695020297?text="+encodeURIComponent(m))};
+  $("bml").onclick=function(){var m=build();if(m)open("mailto:contact@taxisante.com?subject="+encodeURIComponent("Réservation taxi")+"&body="+encodeURIComponent(m))};
+})();
+</script>
+</body>
+</html>
