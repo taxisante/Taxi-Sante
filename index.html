@@ -1,3 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Taxi Santé – Taxi conventionné à Behren-lès-Forbach</title>
+<meta name="description" content="Taxi conventionné à Forbach : transport médical assis vers Metz, Nancy et Strasbourg. Cancer, ALD, consultations spécialisées, examens, hospitalisation. Réservation en ligne ou au 06 95 02 02 97.">
+<style>
+:root{
+  --night:#0a1630; --taxi:#f6b90f; --taxi-ink:#1a1400;
+  --bg:#f3f6fb; --surface:#fff; --ink:#12203d; --muted:#4d5b78; --line:#d6deeb; --brand:#17407f;
+  box-sizing:border-box;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0d1932;--surface:#14223f;--ink:#eef3fc;--muted:#a8b5cf;--line:#27375a;--brand:#f6b90f}
+}
+:root[data-theme="dark"]{--bg:#0d1932;--surface:#14223f;--ink:#eef3fc;--muted:#a8b5cf;--line:#27375a;--brand:#f6b90f}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Verdana,sans-serif;-webkit-text-size-adjust:100%;font-size:1.25rem;line-height:1.7;padding-bottom:5.5rem}
+h1,h2,h3{font-weight:700;line-height:1.15;margin:0;letter-spacing:-.01em}
+a:focus-visible,.btn:focus-visible{outline:3px solid var(--taxi);outline-offset:3px}
+
+.hero{position:relative;min-height:100svh;min-height:100vh;color:#fff;background:linear-gradient(180deg,#123a78 0%,#2a74cf 52%,#8fd6f6 100%);overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:calc(1.25rem + env(safe-area-inset-top,0px)) 1.5rem 2rem}
+.hero>*{position:relative}
+.hero>.top,.hero>div{width:100%;max-width:46rem;margin-left:auto;margin-right:auto}
+html{scroll-behavior:smooth}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media (min-width:900px){.scene{height:clamp(300px,46vh,480px)}.dock{display:none}body{padding-bottom:1rem}.hero h1{font-size:clamp(3rem,5vw,4.4rem)}}
+@media (max-width:360px){.btn{font-size:1.05rem;padding:.7rem 1rem}.badge{font-size:.85rem}}
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.mark{font-weight:700;font-size:1.5rem}
+.badge{font-size:.95rem;border:1.5px solid rgba(255,255,255,.6);border-radius:999px;padding:.2rem .8rem}
+.hero h1{font-size:clamp(2.2rem,8.5vw,3.8rem);max-width:16ch;margin-top:2rem}
+.hero p{max-width:36ch;font-size:1.3rem;margin:1rem 0 0}
+.scene{display:block;width:calc(100% + 3rem);margin:auto -1.5rem -2rem;height:clamp(220px,40vh,380px)}
+.bob{animation:bob .9s ease-in-out infinite alternate}@keyframes bob{from{transform:translateY(0)}to{transform:translateY(-1.3px)}}
+.spin{animation:spin .7s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.road{animation:dash .5s linear infinite}@keyframes dash{to{stroke-dashoffset:26}}
+.cl1{animation:drift 22s ease-in-out infinite alternate}.cl2{animation:drift 30s ease-in-out infinite alternate-reverse}
+@keyframes drift{from{transform:translateX(-14px)}to{transform:translateX(26px)}}
+.halo{animation:pulse 3s ease-in-out infinite alternate;transform-origin:330px 42px}@keyframes pulse{from{opacity:.25;transform:scale(1)}to{opacity:.5;transform:scale(1.12)}}
+.lamp{animation:lamp 1.4s ease-in-out infinite alternate}@keyframes lamp{from{opacity:.3}to{opacity:.9}}
+@media (prefers-reduced-motion:reduce){.bob,.spin,.road,.cl1,.cl2,.halo,.lamp{animation:none}}@media (prefers-reduced-motion:reduce){.beam{animation:none}}
+.actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:3.5rem;padding:.7rem 1.5rem;border-radius:999px;font-weight:700;font-size:1.15rem;text-decoration:none;border:2px solid var(--taxi)}
+.btn-main{background:var(--taxi);color:var(--taxi-ink)}
+.btn-alt{color:#fff;border-color:rgba(255,255,255,.7)}
+
+main{max-width:46rem;margin:0 auto;padding:0 1.5rem}
+section{padding:3.5rem 0 0}
+section+section::before{content:"";display:block;height:0;border-top:4px dashed var(--taxi);width:5rem;margin-bottom:3rem}
+h2{font-size:clamp(1.7rem,6vw,2.3rem);color:var(--brand);margin-bottom:1rem}
+p{margin:0 0 1rem;max-width:62ch}
+.muted{color:var(--muted);font-size:1.05rem}
+
+.route{list-style:none;margin:2rem 0 0;padding:0 0 0 2rem;position:relative}
+.route::before{content:"";position:absolute;left:.55rem;top:.6rem;bottom:.6rem;border-left:3px dashed var(--taxi)}
+.route li{position:relative;padding:.35rem 0 1.1rem;font-weight:700}
+.route li::before{content:"";position:absolute;left:-2rem;top:.75rem;width:1.15rem;height:1.15rem;border-radius:50%;background:var(--surface);border:4px solid var(--taxi)}
+.route li:last-child{padding-bottom:0}
+.route span{display:block;font-weight:400;color:var(--muted);font-size:1rem}
+
+.services{list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}
+.services li{padding:1rem 0;border-bottom:1px solid var(--line)}
+.services strong{display:block;font-size:1.3rem}
+.services span{color:var(--muted);font-size:1.1rem}
+.communes{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;padding:0;margin:1rem 0}
+.communes li{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:.35rem .95rem}
+.communes .main{background:var(--taxi);border-color:var(--taxi);color:var(--taxi-ink);font-weight:700}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:1rem;padding:1.25rem 1.4rem}
+h3{font-size:1.35rem;margin:0 0 .4rem}
+.ald{background:var(--night);color:#fff;border-radius:1.1rem;padding:1.5rem 1.4rem;border-left:8px solid var(--taxi)}
+.ald h2{color:var(--taxi);margin-bottom:.6rem}.ald p{margin:0 0 .8rem}.ald p:last-child{margin:0}
+.ald .tag{display:inline-block;background:var(--taxi);color:var(--taxi-ink);font-weight:700;border-radius:.4rem;padding:.1rem .6rem;margin-right:.4rem}
+.cross{display:inline-block;width:1.1em;height:1.1em;vertical-align:-.15em;margin-right:.5rem;background:linear-gradient(#2fbf9b,#2fbf9b) center/32% 100% no-repeat,linear-gradient(#2fbf9b,#2fbf9b) center/100% 32% no-repeat}
+.places{display:grid;gap:.6rem;list-style:none;padding:0;margin:1rem 0}
+.places li{background:var(--surface);border:1px solid var(--line);border-left:5px solid #2fbf9b;border-radius:.5rem;padding:.7rem 1rem;font-weight:700}
+.places span{display:block;font-weight:400;color:var(--muted);font-size:1.05rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;padding:0;margin:1rem 0}
+.chips li{border:1.5px solid #2fbf9b;border-radius:999px;padding:.3rem .9rem}
+#reserver{scroll-margin-top:1rem}
+.field{margin:0 0 1rem}
+.field label{display:block;font-weight:700;margin-bottom:.3rem}
+.field input,.field select,.field textarea{width:100%;min-height:3.3rem;font:inherit;font-size:1.1rem;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:.6rem;padding:.6rem .8rem}
+.field textarea{min-height:5.5rem}
+.field input:focus,.field select:focus,.field textarea:focus{outline:3px solid var(--taxi);outline-offset:1px;border-color:var(--taxi)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.check{display:flex;align-items:center;gap:.7rem;margin:0 0 1.2rem;font-weight:700}
+.check input{width:1.6rem;height:1.6rem;accent-color:#2fbf9b}
+.err{color:#c0392b;font-weight:700;min-height:1.4rem;margin:0 0 .5rem}
+.send{display:flex;flex-direction:column;gap:.7rem}
+.send .btn{width:100%;border-color:var(--brand)}
+.send .wa{background:#1fa855;border-color:#1fa855;color:#fff}
+.send .mail{background:transparent;color:var(--ink);border-color:var(--line)}
+.trust{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;align-items:center;margin:1.5rem 0 0;padding:.9rem 1.1rem;background:var(--surface);border:1px solid var(--line);border-radius:.8rem;font-weight:700}
+.trust .stars{color:var(--taxi);letter-spacing:.1em;font-size:1.3rem;text-shadow:0 0 1px rgba(0,0,0,.35)}
+.steps{list-style:none;counter-reset:s;padding:0;margin:1.2rem 0 0;display:grid;gap:1rem}
+.steps li{counter-increment:s;position:relative;padding-left:3.6rem}
+.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:2.6rem;height:2.6rem;border-radius:50%;background:var(--taxi);color:var(--taxi-ink);font-weight:700;font-size:1.3rem;display:flex;align-items:center;justify-content:center}
+.steps strong{display:block;font-size:1.3rem}
+.steps span{color:var(--muted);font-size:1.1rem}
+.faq details{border-bottom:1px solid var(--line);padding:.2rem 0}
+.faq summary{cursor:pointer;font-weight:700;font-size:1.2rem;padding:.9rem 2rem .9rem 0;position:relative;list-style:none;min-height:3rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:.2rem;top:.6rem;font-size:1.6rem;color:var(--brand)}
+.faq details[open] summary::after{content:"−"}
+.faq summary:focus-visible{outline:3px solid var(--taxi);outline-offset:2px}
+.faq p{margin:0 0 1rem;color:var(--muted)}
+footer{max-width:46rem;margin:3rem auto 0;padding:1.25rem 1.5rem 0;border-top:1px solid var(--line);color:var(--muted);font-size:1rem}
+
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;gap:.6rem;padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom,0px));background:var(--night);border-top:1px solid rgba(255,255,255,.15)}
+.dock .btn{flex:1;min-height:3.2rem}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TaxiService","name":"Taxi Santé","url":"https://www.taxisante.com/","telephone":"+33695020297","address":{"@type":"PostalAddress","addressLocality":"Behren-lès-Forbach","addressRegion":"Moselle","addressCountry":"FR"},"description":"Taxi conventionné Assurance Maladie, transport médical assis longue distance vers Metz, Nancy, Strasbourg, ALD, cancer, chimiothérapie, radiothérapie, consultations spécialisées, maladies chroniques.","areaServed":["Behren-lès-Forbach","Forbach","Stiring-Wendel","Petite-Rosselle","Morsbach","Rosbruck","Cocheren","Oeting","Spicheren","Diebling","Théding","Freyming-Merlebach","L’Hôpital","Carling","Saint-Avold","Creutzwald","Hombourg-Haut","Farébersviller"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Faut-il une prescription médicale pour un taxi conventionné ?","acceptedAnswer":{"@type":"Answer","text":"Oui, pour un transport remboursé, votre médecin doit la rédiger avant le trajet."}},{"@type":"Question","name":"Mon transport est-il remboursé en ALD ?","acceptedAnswer":{"@type":"Answer","text":"Sur prescription médicale, il peut être pris en charge par l’Assurance Maladie, selon votre situation et le motif du trajet."}},{"@type":"Question","name":"Faut-il un accord préalable pour les traitements en série ou les longs trajets ?","acceptedAnswer":{"@type":"Answer","text":"Un accord préalable de l’Assurance Maladie est souvent nécessaire. Taxi Santé vous aide à effectuer cette démarche."}}]}</script>
+<meta name="theme-color" content="#123a78">
+<link rel="canonical" href="https://www.taxisante.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9A%95%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website"><meta property="og:locale" content="fr_FR"><meta property="og:site_name" content="Taxi Santé">
+<meta property="og:title" content="Taxi Santé – Taxi conventionné, transport médical longue distance">
+<meta property="og:description" content="Metz, Nancy, Strasbourg : chimiothérapie, radiothérapie, consultations, ALD. Réservation en ligne ou au 06 95 02 02 97.">
+<meta property="og:url" content="https://www.taxisante.com/">
+<meta property="og:image" content="https://www.taxisante.com/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<header class="hero">
+  <div class="top"><span class="mark">Taxi Santé</span><span class="badge">Conventionné Assurance Maladie</span></div>
+  <div>
+    <h1>Taxi conventionné pour vos traitements, de chez vous à l’hôpital.</h1>
+    <p>Transport médical assis vers Metz, Nancy et Strasbourg : cancer, ALD, consultations spécialisées, examens, hospitalisation.</p>
+    <div class="actions">
+      <a class="btn btn-main" href="tel:+33695020297">Appeler le 06 95 02 02 97</a>
+      <a class="btn btn-alt" href="#reserver">Réserver un trajet</a>
+    </div>
+  </div>
+  <svg class="scene" viewBox="0 0 400 230" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Une Mercedes GLB noire marquée TAXI roule au soleil vers l’hôpital">
+    <circle class="halo" cx="330" cy="42" r="30" fill="#ffe27a"/>
+    <circle cx="330" cy="42" r="20" fill="#ffd23f"/>
+    <g class="cl1" fill="#fff" opacity=".92"><ellipse cx="90" cy="40" rx="22" ry="8"/><ellipse cx="108" cy="33" rx="15" ry="9"/><ellipse cx="76" cy="36" rx="14" ry="7"/></g>
+    <g class="cl2" fill="#fff" opacity=".85"><ellipse cx="240" cy="66" rx="18" ry="6"/><ellipse cx="253" cy="61" rx="12" ry="7"/></g>
+    <path d="M-10 200 Q60 150 130 175 T260 168 T410 180 V205 H-10Z" fill="#6fcf8d"/>
+    <path d="M18 200 L52 160 L96 158 L126 200Z" fill="#5bb57e"/>
+    <g fill="#1f3f77"><path d="M58 190 L76 128 L94 190 L89 190 L76 140 L63 190Z"/><circle cx="76" cy="126" r="6" fill="none" stroke="#1f3f77" stroke-width="3"/><rect x="90" y="166" width="22" height="26"/></g>
+    <path d="M-10 205 Q80 178 170 194 T410 188 V212 H-10Z" fill="#46b36b"/>
+    <g><rect x="251" y="176" width="3" height="14" fill="#7a5a3a"/><circle cx="252" cy="172" r="10" fill="#2f9a57"/><rect x="118" y="178" width="3" height="12" fill="#7a5a3a"/><circle cx="119" cy="174" r="9" fill="#2f9a57"/></g>
+    <rect x="268" y="140" width="70" height="60" rx="2" fill="#f6f9fc"/><rect x="285" y="128" width="36" height="14" fill="#f6f9fc"/>
+    <g fill="#2fbf9b"><rect x="298" y="104" width="10" height="26" rx="2"/><rect x="290" y="112" width="26" height="10" rx="2"/></g>
+    <g fill="#8ccdf5"><rect x="276" y="148" width="9" height="9"/><rect x="293" y="148" width="9" height="9"/><rect x="310" y="148" width="9" height="9"/><rect x="327" y="148" width="9" height="9"/><rect x="276" y="166" width="9" height="9"/><rect x="327" y="166" width="9" height="9"/></g>
+    <rect x="297" y="182" width="12" height="18" fill="#2a74cf"/>
+    <rect y="198" width="400" height="32" fill="#364560"/><line x1="0" y1="198.5" x2="400" y2="198.5" stroke="#f2f5fa" stroke-width="1.2"/>
+    <line class="road" x1="-26" y1="214" x2="430" y2="214" stroke="#ffd23f" stroke-width="2.5" stroke-dasharray="14 12"/>
+    <g transform="translate(110 153) scale(1.15)"><g class="bob">
+      <defs><linearGradient id="bd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2c2d35"/><stop offset=".5" stop-color="#15151b"/><stop offset="1" stop-color="#0c0c10"/></linearGradient><linearGradient id="gl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7cc4f2"/><stop offset="1" stop-color="#4a9fe0"/></linearGradient></defs>
+      <ellipse cx="60" cy="45.5" rx="62" ry="2.6" fill="#000" opacity=".22"/>
+      <rect x="52.3" y="-3.4" width="3.6" height="3.6" rx=".8" fill="#26272d"/><rect class="lamp" x="52.8" y="-2.6" width="2.6" height="1" fill="#ffd23f"/>
+      <circle cx="20.9" cy="35.3" r="10.9" fill="#0b0b0f"/><circle cx="98.6" cy="35.3" r="10.9" fill="#0b0b0f"/>
+      <path d="M0 37 L.7 26.4 L2.1 17.3 L7.8 3.4 Q10 .8 14.8 .6 L60 0 Q64 0 65.7 1.7 L85.4 14.4 L110.8 19.3 L117.9 22.2 Q120 24 120 32.8 L119.3 37.5 L109 37.5 A10.7 10.7 0 1 0 88.1 37.5 L31.6 37.5 A10.8 10.8 0 1 0 10.2 37.5 L.5 37.5 Q0 37.5 0 37 Z" fill="url(#bd)"/>
+      <line x1="19" y1="1" x2="62.5" y2="1.1" stroke="#c9ced6" stroke-width=".9" stroke-linecap="round"/>
+      <path d="M14.5 13.4 L20.5 5.2 L24.7 5.2 L24.7 13.4Z M30.8 3.8 L51.3 3.8 L51.3 15.1 L30.8 15.1Z M55.1 3.8 L63.5 3.8 L72.7 11.6 L72.7 15.8 L55.1 15.8Z" fill="url(#gl)"/>
+      <path d="M2.6 22 L14 18.5 L100 18.6 L116 22" fill="none" stroke="#3d3e48" stroke-width=".6" opacity=".8"/>
+      <rect x="30.4" y="18.4" width="4" height=".8" rx=".4" fill="#5a5b66"/><rect x="57.9" y="18.6" width="4" height=".8" rx=".4" fill="#5a5b66"/>
+      <path d="M37.4 35.6 L82.6 35.6" stroke="#6a6e79" stroke-width=".8"/>
+      <rect x="74.8" y="12.3" width="4.2" height="2.1" rx=".8" fill="#17171c"/>
+      <path d="M1.4 17.9 L9.9 18.4 L9.6 20.8 L1.5 20.5Z" fill="#ff3b3b"/>
+      <path d="M109.4 22 L117.1 23.2 L116.6 25.7 L110.6 24.8Z" fill="#dfe8f5"/>
+      <text x="45.6" y="29.9" font-size="12.5" textLength="29" lengthAdjust="spacingAndGlyphs" font-weight="900" fill="#fff" font-family="Arial Black,Arial,Helvetica,sans-serif">TAXI</text>
+      <g transform="translate(20.9 35.3)"><circle r="9.6" fill="#0d0d10"/><g class="spin"><circle r="6.9" fill="#1a1c22"/><g stroke="#7b8291" stroke-width="1.1" stroke-linecap="round"><line x1="-6.20" y1="-0.00" x2="6.20" y2="0.00"/><line x1="-5.02" y1="-3.64" x2="5.02" y2="3.64"/><line x1="-1.92" y1="-5.90" x2="1.92" y2="5.90"/><line x1="1.92" y1="-5.90" x2="-1.92" y2="5.90"/><line x1="5.02" y1="-3.64" x2="-5.02" y2="3.64"/></g><circle r="1.6" fill="#9aa1af"/></g></g><g transform="translate(98.6 35.3)"><circle r="9.6" fill="#0d0d10"/><g class="spin"><circle r="6.9" fill="#1a1c22"/><g stroke="#7b8291" stroke-width="1.1" stroke-linecap="round"><line x1="-6.20" y1="-0.00" x2="6.20" y2="0.00"/><line x1="-5.02" y1="-3.64" x2="5.02" y2="3.64"/><line x1="-1.92" y1="-5.90" x2="1.92" y2="5.90"/><line x1="1.92" y1="-5.90" x2="-1.92" y2="5.90"/><line x1="5.02" y1="-3.64" x2="-5.02" y2="3.64"/></g><circle r="1.6" fill="#9aa1af"/></g></g>
+    </g></g>
+  </svg>
+</header>
+
+<main>
+  <div class="trust"><span class="stars" aria-hidden="true">★★★★★</span><a href="https://maps.app.goo.gl/JBZwh68ES1tH1WRH6" target="_blank" rel="noopener" style="color:inherit">5,0 sur 5, avis Google</a><span>Conventionné Assurance Maladie</span></div>
+  <section>
+    <h2>Taxi conventionné à Behren les Forbach pour vos soins et consultations</h2>
+    <p>Chimiothérapie, radiothérapie, consultation spécialisée, examen, hospitalisation ou suivi d’une maladie chronique : nous vous conduisons à Metz, Nancy ou Strasbourg dans un véhicule confortable, avec un chauffeur qui reste à votre écoute et vous aide dans vos démarches administratives si besoin.</p>
+    <p>Taxi Santé est conventionné toutes caisses d’assurance maladie, commune de stationnement Behren-lès-Forbach. Nous prenons en charge les patients de tout le bassin houiller.</p>
+  </section>
+
+  <section>
+    <h2>Comment ça se passe</h2>
+    <ol class="steps">
+      <li><strong>Votre médecin prescrit le transport</strong><span>Il rédige la prescription médicale de transport avant le trajet.</span></li>
+      <li><strong>Vous réservez</strong><span>Avec le formulaire ci-dessous, par WhatsApp ou par téléphone, en indiquant l’heure de votre rendez-vous.</span></li>
+      <li><strong>Nous venons vous chercher</strong><span>Nous fixons l’heure de départ, vous rappelons pour confirmer et nous occupons de la facturation.</span></li>
+    </ol>
+  </section>
+
+  <section id="reserver">
+    <h2>Réserver votre trajet</h2>
+    <div class="box">
+      <div class="field"><label for="nom">Votre nom</label><input id="nom" autocomplete="name"></div>
+      <div class="field"><label for="tel">Téléphone</label><input id="tel" type="tel" autocomplete="tel" inputmode="tel"></div>
+      <div class="two">
+        <div class="field"><label for="date">Date</label><input id="date" type="date"></div>
+        <div class="field"><label for="heure">Heure du rendez-vous</label><input id="heure" type="time"></div>
+      </div>
+      <div class="field"><label for="dep">Adresse de départ</label><input id="dep" autocomplete="street-address"></div>
+      <div class="field"><label for="dest">Destination</label>
+        <select id="dest">
+          <option value="">Choisir</option>
+          <option>Hôpital de Metz</option><option>Hôpital de Nancy</option><option>Hôpital de Strasbourg</option><option>Autre destination</option>
+        </select></div>
+      <div class="field"><label for="type">Type de trajet</label>
+        <select id="type"><option>Transport médical (avec prescription)</option><option>Trajet privé</option></select></div>
+      <label class="check"><input id="ar" type="checkbox" checked>Aller-retour</label>
+      <div class="field"><label for="msg">Précisions (facultatif)</label><textarea id="msg" placeholder="Fauteuil, accompagnant, bagages…"></textarea></div>
+      <p class="err" id="err" role="alert"></p>
+      <div class="send">
+        <button class="btn wa" type="button" id="bwa">Envoyer par WhatsApp</button>
+        <button class="btn mail" type="button" id="bml">Envoyer par e-mail</button>
+      </div>
+      <p class="muted" style="margin:1rem 0 0">Votre demande s’ouvre dans WhatsApp ou dans votre messagerie : il ne reste qu’à appuyer sur envoyer. Nous fixons l’heure de départ selon notre planning et vous rappelons pour confirmer. N’écrivez pas d’informations médicales. Pour un transport remboursé, demandez d’abord la prescription médicale de transport à votre médecin.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="ald">
+      <h2><span class="cross"></span>Vous êtes en ALD ?</h2>
+      <p><span class="tag">ALD</span>Affection de longue durée : cancer, diabète, maladie cardiaque, Parkinson, Alzheimer, sclérose en plaques, maladie respiratoire, polyarthrite et bien d’autres. Nous assurons vos trajets vers vos séances de traitement, vos consultations spécialisées et vos examens de suivi.</p>
+      <p>Sur prescription médicale, votre transport peut être pris en charge par l’Assurance Maladie, selon votre situation. Nous nous occupons de la facturation.</p>
+      <p><strong>Appelez-nous, nous vous expliquons les démarches.</strong></p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Trajets vers les hôpitaux de Metz, Nancy et Strasbourg</h2>
+    <ul class="places">
+      <li>Metz<span>Hôpital de Mercy (CHR Metz-Thionville), Clinique Claude Bernard, Hôpital Robert Schuman</span></li>
+      <li>Nancy<span>CHRU de Nancy (Brabois), Institut de Cancérologie de Lorraine à Vandœuvre-lès-Nancy</span></li>
+      <li>Strasbourg<span>Hôpitaux Universitaires de Strasbourg, Hautepierre, ICANS, Institut Strauss, Clinique Rhéna</span></li>
+    </ul>
+    <ul class="chips">
+      <li>Chimiothérapie</li><li>Radiothérapie</li><li>Immunothérapie</li><li>Oncologie</li><li>Hospitalisation de jour</li><li>Sortie d’hospitalisation</li><li>Mobilité réduite</li>
+    </ul>
+    <p>Consultations et examens liés à votre ALD ou à votre maladie :</p>
+    <ul class="chips">
+      <li>Consultation spécialisée</li><li>Cardiologie</li><li>Neurologie</li><li>Diabétologie</li><li>Pneumologie</li><li>Rhumatologie</li><li>Gastro-entérologie</li><li>Ophtalmologie</li><li>Scanner et IRM</li><li>TEP scan</li><li>Bilan et suivi</li><li>Maladie chronique</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Nos services</h2>
+    <ul class="services">
+      <li><strong>Transport médical assis longue distance</strong><span>Consultations, examens, hospitalisations et sorties, sur prescription médicale.</span></li>
+      <li><strong>Traitements en série</strong><span>Même chauffeur, même ponctualité à chaque séance.</span></li>
+      <li><strong>Gare, aéroport, trajets privés</strong><span>Sur réservation, prix annoncé avant le départ.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Communes desservies</h2>
+    <p>Départ de tout le bassin houiller, autour de Behren-lès-Forbach :</p>
+    <ul class="communes">
+      <li class="main">Behren-lès-Forbach</li><li>Forbach</li><li>Stiring-Wendel</li><li>Petite-Rosselle</li><li>Morsbach</li><li>Rosbruck</li><li>Cocheren</li><li>Oeting</li><li>Spicheren</li><li>Diebling</li><li>Théding</li>
+    </ul>
+    <p>Et plus loin :</p>
+    <ul class="communes">
+      <li>Freyming-Merlebach</li><li>L’Hôpital</li><li>Carling</li><li>Saint-Avold</li><li>Creutzwald</li><li>Hombourg-Haut</li><li>Farébersviller</li>
+    </ul>
+    <p class="muted">Votre commune n’est pas dans la liste ? Appelez-nous.</p>
+  </section>
+
+  <section class="faq">
+    <h2>Questions fréquentes</h2>
+    <details><summary>Faut-il une prescription médicale ?</summary><p>Oui, pour un transport remboursé, votre médecin doit la rédiger avant le trajet. Si vous avez un doute, appelez-nous.</p></details>
+    <details><summary>Mon transport est-il remboursé en ALD ?</summary><p>Sur prescription médicale, il peut être pris en charge par l’Assurance Maladie, selon votre situation et le motif du trajet. Nous facturons directement l’Assurance Maladie.</p></details>
+    <details><summary>Faut-il une autorisation pour les traitements en série ou les longs trajets ?</summary><p>Un accord préalable de l’Assurance Maladie est souvent nécessaire. Nous vous aidons à effectuer cette démarche si besoin.</p></details>
+    <details><summary>Comment est fixée l’heure de départ ?</summary><p>Vous nous indiquez l’heure de votre rendez-vous. Nous fixons l’heure de départ selon la distance et notre planning, puis nous vous la confirmons.</p></details>
+    <details><summary>Puis-je être accompagné ?</summary><p>Oui, dans la limite des places du véhicule. Pour la prise en charge de l’accompagnant, cela dépend de votre prescription : demandez-nous.</p></details>
+    <details><summary>Mon rendez-vous change ou est annulé, que faire ?</summary><p>Prévenez-nous dès que possible par téléphone ou par WhatsApp, nous adaptons le trajet.</p></details>
+  </section>
+<section>
+    <h2>Votre avis compte</h2>
+    <div class="box">
       <p>Vous avez voyagé avec Taxi Santé ? Un avis Google aide d’autres patients à nous trouver. Cela prend 30 secondes.</p>
       <a class="btn btn-main" href="https://g.page/r/CTIq5RHScfoNEAE/review" target="_blank" rel="noopener">Laisser un avis Google</a>
     </div>
