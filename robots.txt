@@ -1,0 +1,9 @@
+User-agent:
+
+Allow: /
+
+robots.txt
+
+Sitemap:
+
+https://www.taxisante.com/sitemap.xml
